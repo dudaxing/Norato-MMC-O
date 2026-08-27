@@ -1,0 +1,32 @@
+{
+  "lbracket_fine.npz": {
+    "source": "GPTO/input_files/Lbracket2d/Lbracket2d_fine.m",
+    "repository": "https://github.com/jnorato/GPTO",
+    "commit": "ead7250e007d4c185de59f8eee6b88a35be39550",
+    "conversion": "tools/convert_matlab_mesh.py; msh.POS[:, :2] and zero-based msh.QUADS[:, :4]"
+  },
+  "lbracket_coarse.npz": {
+    "source": "GPTO/input_files/Lbracket2d/Lbracket2d_coarse.m",
+    "repository": "https://github.com/jnorato/GPTO",
+    "commit": "ead7250e007d4c185de59f8eee6b88a35be39550",
+    "conversion": "tools/convert_matlab_mesh.py; msh.POS[:, :2] and zero-based msh.QUADS[:, :4]"
+  },
+  "reference_mbb2d.npz": {
+    "source": "GPTO/input_files/mbb2d/initial_mbb2d_geometry.mat",
+    "repository": "https://github.com/jnorato/GPTO",
+    "commit": "ead7250e007d4c185de59f8eee6b88a35be39550",
+    "conversion": "GEOM.current_design with IDs converted to zero-based endpoint rows"
+  },
+  "reference_lbracket2d.npz": {
+    "source": "GPTO/input_files/Lbracket2d/initial_geometry_Lbracket2d_connected.mat",
+    "repository": "https://github.com/jnorato/GPTO",
+    "commit": "ead7250e007d4c185de59f8eee6b88a35be39550",
+    "conversion": "GEOM.current_design with IDs converted to zero-based endpoint rows"
+  },
+  "reference_cantilever3d.npz": {
+    "source": "GPTO/input_files/cantilever3d/initial_geometry_cantilever3d.mat",
+    "repository": "https://github.com/jnorato/GPTO",
+    "commit": "ead7250e007d4c185de59f8eee6b88a35be39550",
+    "conversion": "GEOM.current_design with IDs converted to zero-based endpoint rows"
+  }
+}

@@ -1,0 +1,18 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+.venv/
+build/
+dist/
+*.egg-info/
+
+# Upstream repositories and source PDFs are kept locally for traceability,
+# but are not vendored into this reproduction project.
+references/
+tmp/
+
+# Reproduction outputs can be regenerated from the CLI.
+results/
+output_files/

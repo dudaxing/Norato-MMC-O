@@ -1,0 +1,82 @@
+{
+  "date": "2026-08-26",
+  "environment": {
+    "os": "Windows",
+    "python": "3.13.6",
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "matplotlib": "3.10.9",
+    "cpu": "Intel Core i9-13980HX",
+    "memory_gib": 128
+  },
+  "upstream": {
+    "paper_doi": "10.1007/s00158-020-02552-0",
+    "matlab_commit": "ead7250e007d4c185de59f8eee6b88a35be39550",
+    "python_commit": "8157ca2f5b82feb4a2032fd4501c9f49a58b7e8c"
+  },
+  "mbb2d": {
+    "paper_initial": {
+      "compliance": 45.526963475473195,
+      "volume_fraction": 0.3330327441748408
+    },
+    "upstream_reference_design": {
+      "compliance": 4.3099304325915435,
+      "volume_fraction": 0.4498760641590337,
+      "maximum_volume_density": 1.189209088527731
+    },
+    "fresh_optimization": {
+      "iterations": 88,
+      "compliance": 4.256798500904382,
+      "volume_fraction": 0.4499882662679352,
+      "paper_compliance": 4.201067,
+      "relative_compliance_error": 0.01326603477268554
+    }
+  },
+  "lbracket2d": {
+    "paper_initial": {
+      "compliance": 52.33319933010722,
+      "volume_fraction": 0.17016761695703808
+    },
+    "upstream_reference_design": {
+      "compliance": 2.846071785022176,
+      "volume_fraction": 0.30000063675715055,
+      "matlab_compliance": 2.84607178503019
+    },
+    "fresh_optimization": {
+      "iterations": 83,
+      "compliance": 2.8466126644426306,
+      "volume_fraction": 0.2999698144775028,
+      "paper_compliance": 2.846072,
+      "relative_compliance_error": 0.000189968645428042
+    }
+  },
+  "cantilever3d": {
+    "reduced_initial_20x10x10": {
+      "compliance": 28.11794476792578,
+      "volume_fraction": 0.022733424338360224,
+      "matlab_compliance": 28.1179447678968
+    },
+    "upstream_reference_design_paper_mesh": {
+      "compliance": 1.3338153285252254,
+      "volume_fraction": 0.09999106101876072,
+      "maximum_volume_density": 1.1892051008431694,
+      "maximum_stiffness_density": 1.1892010725353546,
+      "cg_iterations": 1666,
+      "relative_residual": 9.990874968127903e-6,
+      "elapsed_seconds": 191.91991,
+      "peak_working_set_bytes": 1899786240,
+      "matlab_compliance": 1.33381532971709
+    },
+    "tiny_fresh_optimization": {
+      "profile": "tiny is not quantitatively comparable with the paper mesh",
+      "iterations": 53,
+      "compliance": 2.269766224366132,
+      "volume_fraction": 0.09999839269305402
+    },
+    "paper": {
+      "iterations": 106,
+      "runtime_minutes": 63,
+      "compliance": null
+    }
+  }
+}

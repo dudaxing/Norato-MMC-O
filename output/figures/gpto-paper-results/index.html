@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GPTO paper figure reproduction</title>
+  <style>
+    :root { color-scheme: light dark; font-family: Inter, "Segoe UI", sans-serif; }
+    body { margin: 0; padding: 32px; background: #f4f6f8; color: #17202a; }
+    header { max-width: 1280px; margin: 0 auto 24px; }
+    h1 { margin: 0 0 8px; font-size: 28px; }
+    p { margin: 6px 0; color: #53606d; }
+    a { color: #155eef; }
+    main { max-width: 1500px; margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 20px; }
+    .figure-card { background: white; border: 1px solid #d8dee5; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(20,30,40,.06); }
+    .figure-card img { display: block; width: 100%; height: 320px; object-fit: contain; background: white; }
+    .caption { padding: 13px 15px 4px; }
+    .note { padding: 0 15px 15px; color: #64717d; font-size: 14px; line-height: 1.45; }
+    @media (max-width: 520px) { body { padding: 16px; } main { grid-template-columns: 1fr; } .figure-card img { height: 250px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>GPTO 论文程序结果图复现</h1>
+    <p>逐图对应 Smith &amp; Norato (2020) Fig. 4-18。点击任意图片查看原始分辨率。</p>
+    <p><a href="contact_sheet.png">总览图</a> · <a href="manifest.json">数据来源与保真说明</a></p>
+  </header>
+  <main>
+      <article class="figure-card" data-case="mbb2d">
+        <a href="fig04_mbb_problem.png"><img src="fig04_mbb_problem.png" alt="Figure 4: MBB beam problem" loading="lazy"></a>
+        <div class="caption"><strong>Fig. 4</strong> MBB beam problem</div>
+        <div class="note">Schematic, not a numerical program output; recreated from the paper specification.</div>
+      </article>
+      <article class="figure-card" data-case="mbb2d">
+        <a href="fig05_mbb_initial_design.png"><img src="fig05_mbb_initial_design.png" alt="Figure 5: Initial design for MBB beam" loading="lazy"></a>
+        <div class="caption"><strong>Fig. 5</strong> Initial design for MBB beam</div>
+        <div class="note">Paper viewport and code-level alpha^2 opacity are reproduced.</div>
+      </article>
+      <article class="figure-card" data-case="mbb2d">
+        <a href="fig06_mbb_optimal_design.png"><img src="fig06_mbb_optimal_design.png" alt="Figure 6: Optimal design for MBB beam" loading="lazy"></a>
+        <div class="caption"><strong>Fig. 6</strong> Optimal design for MBB beam</div>
+        <div class="note">Fresh Python paper-mesh run, 88 iterations; geometry is not the unavailable exact paper checkpoint.</div>
+      </article>
+      <article class="figure-card" data-case="mbb2d">
+        <a href="fig07_mbb_combined_density.png"><img src="fig07_mbb_combined_density.png" alt="Figure 7: Combined density of optimal design for MBB beam" loading="lazy"></a>
+        <div class="caption"><strong>Fig. 7</strong> Combined density of optimal design for MBB beam</div>
+        <div class="note">Uses penalized/effective density exactly as the released structured-mesh MATLAB plotting branch; computed compliance is 1.33% above the paper value.</div>
+      </article>
+      <article class="figure-card" data-case="mbb2d">
+        <a href="fig08_mbb_history.png"><img src="fig08_mbb_history.png" alt="Figure 8: Optimization history for MBB beam" loading="lazy"></a>
+        <div class="caption"><strong>Fig. 8</strong> Optimization history for MBB beam</div>
+        <div class="note">Fresh Python run with the paper mesh and 88 optimizer iterations; semilog compliance and the 0.45 volume limit mirror plot_history.m.</div>
+      </article>
+      <article class="figure-card" data-case="lbracket2d">
+        <a href="fig09_lbracket_problem.png"><img src="fig09_lbracket_problem.png" alt="Figure 9: 2D L-bracket problem" loading="lazy"></a>
+        <div class="caption"><strong>Fig. 9</strong> 2D L-bracket problem</div>
+        <div class="note">Schematic, not a numerical program output; recreated from the paper specification.</div>
+      </article>
+      <article class="figure-card" data-case="lbracket2d">
+        <a href="fig10_lbracket_initial_design.png"><img src="fig10_lbracket_initial_design.png" alt="Figure 10: Initial design for L-bracket" loading="lazy"></a>
+        <div class="caption"><strong>Fig. 10</strong> Initial design for L-bracket</div>
+        <div class="note">Paper viewport and code-level alpha^2 opacity are reproduced.</div>
+      </article>
+      <article class="figure-card" data-case="lbracket2d">
+        <a href="fig11_lbracket_optimal_design.png"><img src="fig11_lbracket_optimal_design.png" alt="Figure 11: Optimal design for L-bracket" loading="lazy"></a>
+        <div class="caption"><strong>Fig. 11</strong> Optimal design for L-bracket</div>
+        <div class="note">Released 64-iteration final geometry; the recomputed compliance matches the paper within 7.6e-8 relative error.</div>
+      </article>
+      <article class="figure-card" data-case="lbracket2d">
+        <a href="fig12_lbracket_combined_density.png"><img src="fig12_lbracket_combined_density.png" alt="Figure 12: Combined density of optimal design for L-bracket" loading="lazy"></a>
+        <div class="caption"><strong>Fig. 12</strong> Combined density of optimal design for L-bracket</div>
+        <div class="note">Uses unpenalized combined density and density-dependent cell-edge opacity, matching plot_density_cells.m.</div>
+      </article>
+      <article class="figure-card" data-case="lbracket2d">
+        <a href="fig13_lbracket_history.png"><img src="fig13_lbracket_history.png" alt="Figure 13: Optimization history for L-bracket" loading="lazy"></a>
+        <div class="caption"><strong>Fig. 13</strong> Optimization history for L-bracket</div>
+        <div class="note">Fresh Python paper-mesh history (83 optimizer iterations); the exact 64-step MATLAB history was not published in either repository.</div>
+      </article>
+      <article class="figure-card" data-case="lbracket2d">
+        <a href="fig14_lbracket_sensitivity_check.png"><img src="fig14_lbracket_sensitivity_check.png" alt="Figure 14: Finite-difference check of L-bracket compliance sensitivities" loading="lazy"></a>
+        <div class="caption"><strong>Fig. 14</strong> Finite-difference check of L-bracket compliance sensitivities</div>
+        <div class="note">All 66 scaled variables use a one-sided forward difference with h=1e-6; the maximum signed discrepancy reproduces the paper's -0.0037 and -0.0013 values.</div>
+      </article>
+      <article class="figure-card" data-case="cantilever3d">
+        <a href="fig15_cantilever3d_problem.png"><img src="fig15_cantilever3d_problem.png" alt="Figure 15: 3D cantilever problem" loading="lazy"></a>
+        <div class="caption"><strong>Fig. 15</strong> 3D cantilever problem</div>
+        <div class="note">The paper caption calls this an initial design, but the body text and image show the load/support schematic; the true initial geometry is Fig. 16.</div>
+      </article>
+      <article class="figure-card" data-case="cantilever3d">
+        <a href="fig16_cantilever3d_initial_design.png"><img src="fig16_cantilever3d_initial_design.png" alt="Figure 16: Initial design for 3D cantilever beam" loading="lazy"></a>
+        <div class="caption"><strong>Fig. 16</strong> Initial design for 3D cantilever beam</div>
+        <div class="note">Real cylinders with hemispherical caps, alpha^2 opacity, and the MATLAB [50,22] camera equivalent are reproduced.</div>
+      </article>
+      <article class="figure-card" data-case="cantilever3d">
+        <a href="fig17_cantilever3d_optimal_design.png"><img src="fig17_cantilever3d_optimal_design.png" alt="Figure 17: Optimal design for 3D cantilever beam" loading="lazy"></a>
+        <div class="caption"><strong>Fig. 17</strong> Optimal design for 3D cantilever beam</div>
+        <div class="note">Released final geometry. The title is corrected to iteration 106; the paper image accidentally retains 'iteration = 0'.</div>
+      </article>
+      <article class="figure-card" data-case="cantilever3d">
+        <a href="fig18_cantilever3d_density_isosurface.png"><img src="fig18_cantilever3d_density_isosurface.png" alt="Figure 18: Combined density isosurface for optimal 3D cantilever beam" loading="lazy"></a>
+        <div class="caption"><strong>Fig. 18</strong> Combined density isosurface for optimal 3D cantilever beam</div>
+        <div class="note">Unpenalized combined density, Cell Data to Point Data averaging, and rho=0.5 are reproduced; the unpublished ParaView camera and lighting are visually approximated.</div>
+      </article>
+  </main>
+</body>
+</html>

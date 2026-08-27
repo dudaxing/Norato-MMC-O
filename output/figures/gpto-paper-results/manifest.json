@@ -1,0 +1,181 @@
+{
+  "title": "Smith-Norato GPTO paper figure reproduction",
+  "generated_at": "2026-08-26T15:11:24.946475+00:00",
+  "paper": "https://doi.org/10.1007/s00158-020-02552-0",
+  "upstream": {
+    "matlab_commit": "ead7250e007d4c185de59f8eee6b88a35be39550",
+    "python_commit": "8157ca2f5b82feb4a2032fd4501c9f49a58b7e8c"
+  },
+  "scope": {
+    "figure_range": "4-18",
+    "figure_count": 15,
+    "matlab_direct_results": 11,
+    "problem_schematics": 3,
+    "vtk_paraview_results": 1
+  },
+  "numerical_results": {
+    "mbb2d": {
+      "iterations": 88,
+      "compliance": 4.256798500904382,
+      "paper_compliance": 4.201067,
+      "relative_compliance_error": 0.01326603477268554,
+      "volume_fraction": 0.4499882662679352
+    },
+    "lbracket2d": {
+      "reference_iterations": 64,
+      "fresh_history_iterations": 83,
+      "compliance": 2.846071785022176,
+      "paper_compliance": 2.846072,
+      "volume_fraction": 0.30000063675715055,
+      "gradient_check": {
+        "zero_based_index": 14,
+        "one_based_index": 15,
+        "signed_absolute_difference": -0.0037266262952790896,
+        "signed_difference_over_objective": -0.0013093929376240426
+      }
+    },
+    "cantilever3d": {
+      "reference_iterations": 106,
+      "compliance": 1.3338153285252254,
+      "volume_fraction": 0.09999106101876072,
+      "isosurface_level": 0.5
+    }
+  },
+  "figures": [
+    {
+      "number": 4,
+      "filename": "fig04_mbb_problem.png",
+      "title": "MBB beam problem",
+      "case": "mbb2d",
+      "category": "problem schematic",
+      "data_source": "Paper dimensions and boundary conditions; redrawn in Python.",
+      "fidelity_note": "Schematic, not a numerical program output; recreated from the paper specification."
+    },
+    {
+      "number": 5,
+      "filename": "fig05_mbb_initial_design.png",
+      "title": "Initial design for MBB beam",
+      "case": "mbb2d",
+      "category": "MATLAB-direct result",
+      "data_source": "Deterministic initial geometry from the released MBB input.",
+      "fidelity_note": "Paper viewport and code-level alpha^2 opacity are reproduced."
+    },
+    {
+      "number": 6,
+      "filename": "fig06_mbb_optimal_design.png",
+      "title": "Optimal design for MBB beam",
+      "case": "mbb2d",
+      "category": "MATLAB-direct result",
+      "data_source": "D:\\Coding\\MMC\\Norato MMC\\results\\mbb2d\\paper-run\\final.npz",
+      "fidelity_note": "Fresh Python paper-mesh run, 88 iterations; geometry is not the unavailable exact paper checkpoint."
+    },
+    {
+      "number": 7,
+      "filename": "fig07_mbb_combined_density.png",
+      "title": "Combined density of optimal design for MBB beam",
+      "case": "mbb2d",
+      "category": "MATLAB-direct result",
+      "data_source": "D:\\Coding\\MMC\\Norato MMC\\results\\mbb2d\\paper-run\\final.npz",
+      "fidelity_note": "Uses penalized/effective density exactly as the released structured-mesh MATLAB plotting branch; computed compliance is 1.33% above the paper value."
+    },
+    {
+      "number": 8,
+      "filename": "fig08_mbb_history.png",
+      "title": "Optimization history for MBB beam",
+      "case": "mbb2d",
+      "category": "MATLAB-direct result",
+      "data_source": "D:\\Coding\\MMC\\Norato MMC\\results\\mbb2d\\paper-run\\history.csv",
+      "fidelity_note": "Fresh Python run with the paper mesh and 88 optimizer iterations; semilog compliance and the 0.45 volume limit mirror plot_history.m."
+    },
+    {
+      "number": 9,
+      "filename": "fig09_lbracket_problem.png",
+      "title": "2D L-bracket problem",
+      "case": "lbracket2d",
+      "category": "problem schematic",
+      "data_source": "Paper dimensions and boundary conditions; redrawn in Python.",
+      "fidelity_note": "Schematic, not a numerical program output; recreated from the paper specification."
+    },
+    {
+      "number": 10,
+      "filename": "fig10_lbracket_initial_design.png",
+      "title": "Initial design for L-bracket",
+      "case": "lbracket2d",
+      "category": "MATLAB-direct result",
+      "data_source": "Deterministic connected-bar initial geometry from the released L-bracket input.",
+      "fidelity_note": "Paper viewport and code-level alpha^2 opacity are reproduced."
+    },
+    {
+      "number": 11,
+      "filename": "fig11_lbracket_optimal_design.png",
+      "title": "Optimal design for L-bracket",
+      "case": "lbracket2d",
+      "category": "MATLAB-direct result",
+      "data_source": "D:\\Coding\\MMC\\Norato MMC\\results\\lbracket2d\\reference-paper\\reference.npz",
+      "fidelity_note": "Released 64-iteration final geometry; the recomputed compliance matches the paper within 7.6e-8 relative error."
+    },
+    {
+      "number": 12,
+      "filename": "fig12_lbracket_combined_density.png",
+      "title": "Combined density of optimal design for L-bracket",
+      "case": "lbracket2d",
+      "category": "MATLAB-direct result",
+      "data_source": "D:\\Coding\\MMC\\Norato MMC\\results\\lbracket2d\\reference-paper\\reference.npz",
+      "fidelity_note": "Uses unpenalized combined density and density-dependent cell-edge opacity, matching plot_density_cells.m."
+    },
+    {
+      "number": 13,
+      "filename": "fig13_lbracket_history.png",
+      "title": "Optimization history for L-bracket",
+      "case": "lbracket2d",
+      "category": "MATLAB-direct result",
+      "data_source": "D:\\Coding\\MMC\\Norato MMC\\results\\lbracket2d\\paper-run\\history.csv",
+      "fidelity_note": "Fresh Python paper-mesh history (83 optimizer iterations); the exact 64-step MATLAB history was not published in either repository."
+    },
+    {
+      "number": 14,
+      "filename": "fig14_lbracket_sensitivity_check.png",
+      "title": "Finite-difference check of L-bracket compliance sensitivities",
+      "case": "lbracket2d",
+      "category": "MATLAB-direct result",
+      "data_source": "D:\\Coding\\MMC\\Norato MMC\\results\\lbracket2d\\paper-reference-gradient-check\\gradient_check.json",
+      "fidelity_note": "All 66 scaled variables use a one-sided forward difference with h=1e-6; the maximum signed discrepancy reproduces the paper's -0.0037 and -0.0013 values."
+    },
+    {
+      "number": 15,
+      "filename": "fig15_cantilever3d_problem.png",
+      "title": "3D cantilever problem",
+      "case": "cantilever3d",
+      "category": "problem schematic",
+      "data_source": "Paper dimensions and boundary conditions; redrawn in Python.",
+      "fidelity_note": "The paper caption calls this an initial design, but the body text and image show the load/support schematic; the true initial geometry is Fig. 16."
+    },
+    {
+      "number": 16,
+      "filename": "fig16_cantilever3d_initial_design.png",
+      "title": "Initial design for 3D cantilever beam",
+      "case": "cantilever3d",
+      "category": "MATLAB-direct result",
+      "data_source": "Deterministic initial 16-bar geometry from the released 3D input.",
+      "fidelity_note": "Real cylinders with hemispherical caps, alpha^2 opacity, and the MATLAB [50,22] camera equivalent are reproduced."
+    },
+    {
+      "number": 17,
+      "filename": "fig17_cantilever3d_optimal_design.png",
+      "title": "Optimal design for 3D cantilever beam",
+      "case": "cantilever3d",
+      "category": "MATLAB-direct result",
+      "data_source": "D:\\Coding\\MMC\\Norato MMC\\results\\cantilever3d\\reference-paper\\reference.npz",
+      "fidelity_note": "Released final geometry. The title is corrected to iteration 106; the paper image accidentally retains 'iteration = 0'."
+    },
+    {
+      "number": 18,
+      "filename": "fig18_cantilever3d_density_isosurface.png",
+      "title": "Combined density isosurface for optimal 3D cantilever beam",
+      "case": "cantilever3d",
+      "category": "VTK/ParaView post-processing",
+      "data_source": "D:\\Coding\\MMC\\Norato MMC\\results\\cantilever3d\\reference-paper\\reference.npz",
+      "fidelity_note": "Unpenalized combined density, Cell Data to Point Data averaging, and rho=0.5 are reproduced; the unpublished ParaView camera and lighting are visually approximated."
+    }
+  ]
+}
