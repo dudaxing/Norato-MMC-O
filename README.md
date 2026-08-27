@@ -35,6 +35,70 @@ L 型支架和三维悬臂梁案例。实现以论文案例定义和作者 MATLA
 完整数字和解释见 [复现报告](docs/REPRODUCTION_REPORT.md)，机器可读快照见
 [verified_results.json](validation/verified_results.json)。
 
+## 复现算例与效果图
+
+本项目完整覆盖论文 Fig. 4--18：3 幅算例/边界条件示意、11 幅 MATLAB
+直接结果图，以及 1 幅由 VTK 数据经等值面后处理得到的三维密度图。点击图片可在
+GitHub 中查看原始分辨率；逐图数据来源与保真说明见
+[manifest.json](output/figures/gpto-paper-results/manifest.json)，排版图册见
+[PDF atlas](output/pdf/gpto-paper-results-atlas.pdf)。
+
+![Smith--Norato GPTO Fig. 4--18 复现总览](output/figures/gpto-paper-results/contact_sheet.png)
+
+| 算例 | 论文网格 | 设计变量 | 体积分数上限 | 图示终态柔度 |
+|---|---:|---:|---:|---:|
+| MBB 半梁 | 200 × 50 Q4（10,000 单元） | 192 | 0.45 | 4.256798501 |
+| L 型支架 | 6,123 个非规则 Q4 单元 | 66 | 0.30 | 2.846071785 |
+| 三维悬臂梁 | 80 × 40 × 40 H8（128,000 单元） | 128 | 0.10 | 1.333815329 |
+
+### 1. MBB 半梁
+
+右半域尺寸为 `20 × 5`，左上角承受向下载荷 `F=0.1`，体积分数约束为
+`0.45`。初始设计由 32 根 floating bars 构成，论文网格包含 10,000 个
+Q4 单元。本实现运行 88 次得到柔度 `4.256798501`；论文报告
+`4.201067`，相差 `1.33%`。
+
+| 边界条件 | 初始显式设计 | 最优显式设计 | 惩罚后有效密度 |
+|:---:|:---:|:---:|:---:|
+| ![MBB beam problem](output/figures/gpto-paper-results/fig04_mbb_problem.png) | ![MBB initial design](output/figures/gpto-paper-results/fig05_mbb_initial_design.png) | ![MBB optimal design](output/figures/gpto-paper-results/fig06_mbb_optimal_design.png) | ![MBB density](output/figures/gpto-paper-results/fig07_mbb_combined_density.png) |
+
+![MBB compliance and volume history](output/figures/gpto-paper-results/fig08_mbb_history.png)
+
+### 2. L 型支架
+
+外包尺寸为 `100 × 100`、两臂宽度为 `40`，顶边固定，右端施加向下载荷
+`F=0.1`，体积分数上限为 `0.30`。官方 64 次迭代终态重新分析得到柔度
+`2.846071785`，与论文图中的 `2.846072` 一致。本实现独立优化历史在
+83 次收敛到 `2.846612664`。
+
+| 边界条件 | 初始 connected bars | 官方最优显式设计 | 未惩罚组合密度 |
+|:---:|:---:|:---:|:---:|
+| ![L-bracket problem](output/figures/gpto-paper-results/fig09_lbracket_problem.png) | ![L-bracket initial design](output/figures/gpto-paper-results/fig10_lbracket_initial_design.png) | ![L-bracket optimal design](output/figures/gpto-paper-results/fig11_lbracket_optimal_design.png) | ![L-bracket density](output/figures/gpto-paper-results/fig12_lbracket_combined_density.png) |
+
+| 独立 Python 优化历史 | 66 个缩放变量的前向有限差分检查 |
+|:---:|:---:|
+| ![L-bracket history](output/figures/gpto-paper-results/fig13_lbracket_history.png) | ![L-bracket gradient check](output/figures/gpto-paper-results/fig14_lbracket_sensitivity_check.png) |
+
+有限差分采用论文规定的单边前向格式和步长 `1e-6`。最大差异出现在第 15 个
+设计变量（第 8 个点的 x 分量）：有符号绝对差为 `-0.0037266`，除以柔度后为
+`-0.0013094`，复现论文报告的 `-0.0037 / -0.0013`。
+
+### 3. 三维悬臂梁
+
+设计域尺寸为 `20 × 10 × 10`，固定端四角约束、自由端中心承受向下载荷
+`F=0.1`。论文网格含 128,000 个 H8 单元，初始设计为 16 根短 floating
+bars。下图采用官方 106 次迭代存档终态；显式杆按 MATLAB 的
+`view([50,22])` 和设计域平面裁切绘制，密度图使用未惩罚组合密度并在
+Cell Data to Point Data 后提取 `rho=0.5` 等值面。
+
+| 边界条件 | 初始显式设计 | 官方最优显式设计 | `rho=0.5` 组合密度等值面 |
+|:---:|:---:|:---:|:---:|
+| ![3D cantilever problem](output/figures/gpto-paper-results/fig15_cantilever3d_problem.png) | ![3D initial design](output/figures/gpto-paper-results/fig16_cantilever3d_initial_design.png) | ![3D optimal design](output/figures/gpto-paper-results/fig17_cantilever3d_optimal_design.png) | ![3D density isosurface](output/figures/gpto-paper-results/fig18_cantilever3d_density_isosurface.png) |
+
+论文没有发布 Fig. 18 的 ParaView 相机、材质和光照状态，因此等值面拓扑、阈值、
+边界封口和观察方向按论文复现，表面材质与照明属于视觉近似。论文 Fig. 17 图内标题
+误保留为 `iteration = 0`，这里按正文修正为 `iteration = 106`。
+
 ## 安装
 
 需要 Python 3.11 或更新版本。Windows PowerShell 示例：
